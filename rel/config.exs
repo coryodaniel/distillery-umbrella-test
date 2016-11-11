@@ -1,8 +1,8 @@
 use Mix.Releases.Config,
     # This sets the default release built by `mix release`
-    default_release: :master_app,
+    default_release: :umbrella_test,
     # This sets the default environment used by `mix release`
-    default_environment: Mix.env
+    default_environment: :prod
 
 # For a full list of config options for both releases
 # and environments, visit https://hexdocs.pm/distillery/configuration.html
@@ -17,6 +17,7 @@ environment :dev do
   set dev_mode: true
   set include_erts: false
 end
+
 
 environment :prod do
   set include_erts: true
@@ -42,3 +43,16 @@ release :master_app do
   plugin Conform.ReleasePlugin
 end
 
+conform_prestart = Path.join(["#{:code.priv_dir(:conform)}",
+                              "bin",
+                              "pre_start.sh"])
+
+
+release :umbrella_test do
+  plugin Conform.ReleasePlugin
+  set pre_start_hook: conform_prestart
+  set version: "0.1.0"
+  set applications: [
+    master_app: :permanent
+  ]
+end

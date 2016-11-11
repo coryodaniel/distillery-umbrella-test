@@ -48,22 +48,8 @@ but should be brought to the users attention, or `{:error, message}` if it is in
 
 See the moduledoc for `Conform.Schema.Validator` for more details and examples.
 """
-[
-  extends: [
-    :app_one,
-    :app_two
-],
-  import: [],
-  mappings: [
-    "master_app.port": [
-      commented: false,
-      datatype: :integer,
-      default: 8099,
-      doc: "Provide documentation for master_app.port here.",
-      hidden: false,
-      to: "master_app.port"
-    ],
-  ],
-  transforms: [],
-  validators: []
-]
+[extends: [],
+ import: [],
+ mappings: [],
+ transforms: [],
+ validators: []]
