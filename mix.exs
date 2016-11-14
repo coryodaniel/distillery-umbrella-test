@@ -22,8 +22,9 @@ defmodule UmbrellaTest.Mixfile do
   # and cannot be accessed from applications inside the apps folder
   defp deps do
     [
-     {:distillery, path: "../distillery"},
-     {:conform, path: "../conform"}
+     {:distillery, git: "https://github.com/bitwalker/distillery"},
+     # {:conform, path: "../conform"},
+     {:conform, git: "https://github.com/coryodaniel/conform", branch: "conform_umbrella_distillery_plugin"}
     ]
   end
 end
